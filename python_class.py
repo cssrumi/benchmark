@@ -10,11 +10,11 @@ class PythonClass:
         self.e = e
         self.f = f
 
-    @benchmark
-    def calculate(self, dct: dict):
-        sum([dct[key] * getattr(self, key) for key in vars(self)])
-
     # much faster
-    @benchmark
+    # @benchmark
+    def calculate(self, dct: dict):
+        return sum([dct[key] * self.__dict__[key] for key in vars(self)])
+
+    # @benchmark
     def calculate2(self, dct: dict):
-        sum([dct[key] * self.__dict__[key] for key in vars(self)])
+        return sum([dct[key] * getattr(self, key) for key in vars(self)])

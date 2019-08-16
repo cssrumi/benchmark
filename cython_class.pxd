@@ -5,4 +5,10 @@ cdef class CythonClass:
     cdef float d
     cdef float e
     cdef float f
-    cpdef calculate
+
+    cpdef public float calculate(self, dict test_dict: dict)
+
+cdef class Test:
+
+    cpdef public void init_test(self)
+
